@@ -7,4 +7,5 @@
     <string name="weigth">Peso (Kg)</string>
     <string name="heigth">Altura (cm)</string>
     <string name="calc">CALCULAR</string>
+    <string name="fields_message">Todos os campos devem ser maiores que zero.</string>
 </resources>
