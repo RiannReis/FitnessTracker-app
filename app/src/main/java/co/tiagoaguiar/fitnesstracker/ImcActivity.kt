@@ -1,11 +1,11 @@
 package co.tiagoaguiar.fitnesstracker
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class ImcActivity : AppCompatActivity() {
@@ -34,7 +34,33 @@ class ImcActivity : AppCompatActivity() {
             val result = calculateImc(weigth, heigth)
 
             val imcResponseId = imcResponse(result)
-            Toast.makeText(this, imcResponseId, Toast.LENGTH_SHORT).show()
+
+            val dialog = AlertDialog.Builder(this)
+
+                //OP 01: a função e dialog exposto
+//            dialog.setTitle(getString(R.string.imc_response, result))
+//            dialog.setMessage(imcResponseId)
+
+//            dialog.setPositiveButton(android.R.string.ok, object: DialogInterface.OnClickListener{
+//                override fun onClick(dialog: DialogInterface?, which: Int) {
+//
+//                }
+//            dialog.create()
+//            dialog .show()
+
+
+                //OP 02: usando lambda e dialog oculto
+                .setTitle(getString(R.string.imc_response, result))
+                .setMessage(imcResponseId)
+            dialog.setPositiveButton(
+                android.R.string.ok
+            ) { dialog, which ->
+
+            }
+                .create()
+                .show()
+
+
         }
     }
 
@@ -87,7 +113,7 @@ class ImcActivity : AppCompatActivity() {
     }
 
     private fun calculateImc(weigth: Int, heigth: Int): Double {
-        return weigth / ( (heigth / 100.0) * (heigth / 100.0) )
+        return weigth / ((heigth / 100.0) * (heigth / 100.0))
     }
 
     private fun validate(): Boolean {
