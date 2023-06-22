@@ -1,18 +1,18 @@
 package co.tiagoaguiar.fitnesstracker
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     //    private lateinit var btnImc: LinearLayout
     private lateinit var rvMain: RecyclerView
@@ -43,10 +43,10 @@ class MainActivity : AppCompatActivity() {
         //1 layout XML
         //2 onde a RecyclerView vai aparecer (tela principal)
         // 3 logica: conectar o XML da celula dentro do RecyclerView + sua qtd de elementos dinamicos
-        val adapter = MainAdapter(mainItems)
+        val adapter = MainAdapter(mainItems, this)
         rvMain = findViewById(R.id.rv_main)
         rvMain.adapter = adapter
-        rvMain.layoutManager = LinearLayoutManager(this)
+        rvMain.layoutManager = GridLayoutManager(this, 2)
 
 
         //parte logica precisa de classe para administrar a RecyclerView e suas células (layots de itens)
@@ -66,8 +66,11 @@ class MainActivity : AppCompatActivity() {
 //        }
     }
 
-    private inner class MainAdapter(private val mainItems: List<MainItem>) :
-        RecyclerView.Adapter<MainViewHolder>() {
+    private inner class MainAdapter(
+        private val mainItems: List<MainItem>,
+        private val onItemClickListener: OnItemClickListener
+    ) :
+        RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
         //qual é o layout XML da célula específica (item)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
@@ -87,19 +90,34 @@ class MainActivity : AppCompatActivity() {
             return mainItems.size
         }
 
+        private inner class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            fun bind(item: MainItem) {
+                val img: ImageView = itemView.findViewById(R.id.item_img_icon)
+                val name: TextView = itemView.findViewById(R.id.item_txt_name)
+                val container: LinearLayout = itemView.findViewById(R.id.item_container_imc)
+
+                img.setImageResource(item.drawableId)
+                name.setText(item.textStringId)
+                container.setBackgroundColor(item.color)
+
+                container.setOnClickListener {
+                    onItemClickListener.onClick(item.id)
+                }
+            }
+
     }
 
-    private class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(item: MainItem){
-            val img: ImageView = itemView.findViewById(R.id.item_img_icon)
-            val name: TextView = itemView.findViewById(R.id.item_txt_name)
-            val container: LinearLayout = itemView as LinearLayout
+    }
 
-            img.setImageResource(item.drawableId)
-            name.setText(item.textStringId)
-            container.setBackgroundColor(item.color)
+    override fun onClick(id: Int) {
+        when(id){
+            1 -> {
+                val i = Intent(this, ImcActivity::class.java)
+                startActivity(i)
+            }
+            2 -> {
+
+            }
         }
-
     }
-
 }
