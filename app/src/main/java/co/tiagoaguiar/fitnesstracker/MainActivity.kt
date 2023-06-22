@@ -43,21 +43,18 @@ class MainActivity : AppCompatActivity(){
         //1 layout XML
         //2 onde a RecyclerView vai aparecer (tela principal)
         // 3 logica: conectar o XML da celula dentro do RecyclerView + sua qtd de elementos dinamicos
-        val adapter = MainAdapter(mainItems, object : OnItemClickListener{
-            override fun onClick(id: Int) {
-                when(id){
-                    1 -> {
-                        val i = Intent(this@MainActivity, ImcActivity::class.java)
-                        startActivity(i)
-                    }
-                    2 -> {
+        val adapter = MainAdapter(mainItems) { id ->
 
-                    }
+            when(id){
+                1 -> {
+                    val i = Intent(this@MainActivity, ImcActivity::class.java)
+                    startActivity(i)
+                }
+                2 -> {
+
                 }
             }
-
-
-        })
+        }
         rvMain = findViewById(R.id.rv_main)
         rvMain.adapter = adapter
         rvMain.layoutManager = GridLayoutManager(this, 2)
@@ -82,7 +79,7 @@ class MainActivity : AppCompatActivity(){
 
     private inner class MainAdapter(
         private val mainItems: List<MainItem>,
-        private val onItemClickListener: OnItemClickListener
+        private val onItemClickListener: (Int) -> Unit
     ) :
         RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
@@ -115,7 +112,7 @@ class MainActivity : AppCompatActivity(){
                 container.setBackgroundColor(item.color)
 
                 container.setOnClickListener {
-                    onItemClickListener.onClick(item.id)
+                    onItemClickListener.invoke(item.id)
                 }
             }
 
