@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity(), OnItemClickListener {
+class MainActivity : AppCompatActivity(){
 
     //    private lateinit var btnImc: LinearLayout
     private lateinit var rvMain: RecyclerView
@@ -43,7 +43,21 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         //1 layout XML
         //2 onde a RecyclerView vai aparecer (tela principal)
         // 3 logica: conectar o XML da celula dentro do RecyclerView + sua qtd de elementos dinamicos
-        val adapter = MainAdapter(mainItems, this)
+        val adapter = MainAdapter(mainItems, object : OnItemClickListener{
+            override fun onClick(id: Int) {
+                when(id){
+                    1 -> {
+                        val i = Intent(this@MainActivity, ImcActivity::class.java)
+                        startActivity(i)
+                    }
+                    2 -> {
+
+                    }
+                }
+            }
+
+
+        })
         rvMain = findViewById(R.id.rv_main)
         rvMain.adapter = adapter
         rvMain.layoutManager = GridLayoutManager(this, 2)
@@ -109,15 +123,4 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     }
 
-    override fun onClick(id: Int) {
-        when(id){
-            1 -> {
-                val i = Intent(this, ImcActivity::class.java)
-                startActivity(i)
-            }
-            2 -> {
-
-            }
-        }
-    }
 }
