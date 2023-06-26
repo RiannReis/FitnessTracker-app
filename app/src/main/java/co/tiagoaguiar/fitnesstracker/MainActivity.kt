@@ -1,5 +1,6 @@
 package co.tiagoaguiar.fitnesstracker
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -47,11 +48,10 @@ class MainActivity : AppCompatActivity(){
 
             when(id){
                 1 -> {
-                    val i = Intent(this@MainActivity, ImcActivity::class.java)
-                    startActivity(i)
+                    openActivity(this@MainActivity, ImcActivity::class.java)
                 }
                 2 -> {
-
+                    openActivity(this@MainActivity, TmbActivity::class.java)
                 }
             }
         }
@@ -118,6 +118,11 @@ class MainActivity : AppCompatActivity(){
 
     }
 
+    }
+
+    private fun <T> openActivity(packageContext: Context, cls: Class<T>){
+        val i = Intent(packageContext, cls)
+        startActivity(i)
     }
 
 }
