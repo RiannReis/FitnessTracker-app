@@ -5,19 +5,31 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/fit_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/fit_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessTracker">
-        <activity android:name=".TmbActivity"></activity>
+        <activity android:name=".CfmDescActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PercentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CfmActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TmbActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ListCalcActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".ImcActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ImcActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

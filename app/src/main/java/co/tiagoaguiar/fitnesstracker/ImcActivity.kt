@@ -41,7 +41,7 @@ class ImcActivity : AppCompatActivity() {
 
             val imcResponseId = imcResponse(result)
 
-            val dialog = AlertDialog.Builder(this)
+            AlertDialog.Builder(this)
 
                 .setTitle(getString(R.string.imc_response, result))
                 .setMessage(imcResponseId)
@@ -52,10 +52,18 @@ class ImcActivity : AppCompatActivity() {
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
-                        dao.insert(Calc(type = "imc", res = result))
+
+                        val updateId = intent.extras?.getInt("updateId")
+
+                        if (updateId != null) {
+                            dao.update(Calc(id = updateId, type = "imc", res = result))
+                        } else {
+                            dao.insert(Calc(type = "imc", res = result))
+                        }
 
                         runOnUiThread {
                             openListActivity()
+                            Toast.makeText(this, R.string.update, Toast.LENGTH_SHORT).show()
                         }
                     }.start()
                 }
@@ -69,13 +77,14 @@ class ImcActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.imc_menu, menu)
+        menuInflater.inflate(R.menu.fit_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.imc_menu_search) {
+        if (item.itemId == R.id.menu_search) {
             finish()
             openListActivity()
         }

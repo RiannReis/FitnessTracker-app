@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/eraz_bg">
 
         <TextView
+            android:layout_gravity="center"
             android:id="@+id/txt_item_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="item teste 1" />
+            android:textColor="@color/container"
+            tools:text="item teste 1"
+            android:textSize="16sp"
+            android:paddingBottom="4dp"/>
 
 </LinearLayout>

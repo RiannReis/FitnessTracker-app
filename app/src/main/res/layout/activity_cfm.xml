@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/eraz_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_calc_menu"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".ImcActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="48dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp"
+            android:text="@string/fcm_text"
+            android:textColor="@color/container"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/TextViewForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fcm_desc"
+            android:textColor="@color/container"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_fcm_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/container"
+            android:text="@string/fcm_tip"/>
+
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_btn_man"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/radio_btn_fem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/female" />
+
+        </RadioGroup>
+
+
+        <EditText
+            android:id="@+id/edit_fcm_age"
+            style="@style/EditTextForm"
+            android:hint="@string/age" />
+
+        <Button
+            android:id="@+id/fcm_send"
+            style="@style/ButtonForm"
+            android:layout_marginBottom="24dp"
+            android:text="@string/calc" />
+
+    </LinearLayout>
+
+</ScrollView>

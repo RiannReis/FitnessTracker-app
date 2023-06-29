@@ -47,7 +47,7 @@ class TmbActivity : AppCompatActivity() {
             val result = calculateTmb(weigth, heigth, age)
             val tmbResponseId = tmbResponse(result)
 
-            val dialog = AlertDialog.Builder(this)
+            AlertDialog.Builder(this)
                 .setMessage(getString(R.string.tmb_response, tmbResponseId))
                 .setPositiveButton(android.R.string.ok) { dialog, which ->
 
@@ -56,10 +56,18 @@ class TmbActivity : AppCompatActivity() {
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
-                        dao.insert(Calc(type = "tmb", res = result))
+
+                        val updateId = intent.extras?.getInt("updateId")
+
+                        if (updateId != null) {
+                            dao.update(Calc(id = updateId, type = "tmb", res = tmbResponseId))
+                        } else {
+                            dao.insert(Calc(type = "tmb", res = tmbResponseId))
+                        }
 
                         runOnUiThread {
                             openListActivity()
+                            Toast.makeText(this, R.string.update, Toast.LENGTH_SHORT).show()
                         }
                     }.start()
                 }
@@ -73,13 +81,14 @@ class TmbActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.imc_menu, menu)
+        menuInflater.inflate(R.menu.fit_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.imc_menu_search) {
+        if (item.itemId == R.id.menu_search) {
             finish()
             openListActivity()
         }

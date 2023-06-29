@@ -2,7 +2,6 @@ package co.tiagoaguiar.fitnesstracker
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
-    //    private lateinit var btnImc: LinearLayout
     private lateinit var rvMain: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,31 +25,45 @@ class MainActivity : AppCompatActivity(){
             MainItem(
                 id = 1,
                 drawableId = R.drawable.ic_baseline_calculate_24,
-                textStringId = R.string.label_imc,
-                color = Color.GRAY
+                textStringId = R.string.label_imc
             )
         )
         mainItems.add(
             MainItem(
                 id = 2,
                 drawableId = R.drawable.ic_baseline_run_circle_24,
-                textStringId = R.string.label_tmb,
-                color = Color.LTGRAY
+                textStringId = R.string.label_tmb
+            )
+        )
+        mainItems.add(
+            MainItem(
+                id = 3,
+                drawableId = R.drawable.ic_baseline_favorite_24,
+                textStringId = R.string.label_cfm
+            )
+        )
+        mainItems.add(
+            MainItem(
+                id = 4,
+                drawableId = R.drawable.ic_baseline_accessibility_24,
+                textStringId = R.string.label_fat_perc
             )
         )
 
-
-        //1 layout XML
-        //2 onde a RecyclerView vai aparecer (tela principal)
-        // 3 logica: conectar o XML da celula dentro do RecyclerView + sua qtd de elementos dinamicos
         val adapter = MainAdapter(mainItems) { id ->
 
-            when(id){
+            when (id) {
                 1 -> {
                     openActivity(this@MainActivity, ImcActivity::class.java)
                 }
                 2 -> {
                     openActivity(this@MainActivity, TmbActivity::class.java)
+                }
+                3 -> {
+                    openActivity(this@MainActivity, CfmActivity::class.java)
+                }
+                4 -> {
+                    openActivity(this@MainActivity, PercentActivity::class.java)
                 }
             }
         }
@@ -59,22 +71,6 @@ class MainActivity : AppCompatActivity(){
         rvMain.adapter = adapter
         rvMain.layoutManager = GridLayoutManager(this, 2)
 
-
-        //parte logica precisa de classe para administrar a RecyclerView e suas células (layots de itens)
-        //Adapter: é a classe que é responsável por nos permitir criar layouts especificos de forma dinamica
-        //O SDK não sabe como é o formato de nosso layout, por isso precisa do adaptador, pra informar
-        //como ele irá conectar o layout à RecyclerView.
-        //ViewHolder: é a classe que é a célula em si (layout) que serve como guia para a classe Adapter
-        //é a classe que podemos usar para buscar as referências de cada célula da nossa RecyclerView
-        //LayoutManager: informa a posiçao que o elemento será colocado, em colunas, grades, ...
-
-//        btnImc = findViewById(R.id.btn_imc)
-//
-//        btnImc.setOnClickListener {
-//            //codigo padrão pra navegar pra proxima tela e é chamado de empilhamento de activities
-//            val i = Intent(this, ImcActivity::class.java)
-//            startActivity(i)
-//        }
     }
 
     private inner class MainAdapter(
@@ -83,20 +79,17 @@ class MainActivity : AppCompatActivity(){
     ) :
         RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
-        //qual é o layout XML da célula específica (item)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val view = layoutInflater.inflate(R.layout.main_item, parent, false)
             return MainViewHolder(view)
         }
 
-        //disparado toda vez que houver uma rolagem na tela e for necessário trocar o conteúdo da célula
         override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
             val itemCurrent = mainItems[position]
             holder.bind(itemCurrent)
 
         }
 
-        //informar quantas células essa listagem terá
         override fun getItemCount(): Int {
             return mainItems.size
         }
@@ -109,18 +102,17 @@ class MainActivity : AppCompatActivity(){
 
                 img.setImageResource(item.drawableId)
                 name.setText(item.textStringId)
-                container.setBackgroundColor(item.color)
 
                 container.setOnClickListener {
                     onItemClickListener.invoke(item.id)
                 }
             }
 
-    }
+        }
 
     }
 
-    private fun <T> openActivity(packageContext: Context, cls: Class<T>){
+    private fun <T> openActivity(packageContext: Context, cls: Class<T>) {
         val i = Intent(packageContext, cls)
         startActivity(i)
     }

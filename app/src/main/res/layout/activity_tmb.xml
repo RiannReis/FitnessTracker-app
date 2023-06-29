@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/eraz_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,13 +11,17 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".ImcActivity">
+        tools:context=".ImcActivity"
+        android:background="@drawable/shape_calc_menu"
+        >
 
         <TextView
             style="@style/TextViewForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tmb_desc" />
+            android:text="@string/tmb_desc"
+            android:textSize="16sp"
+            android:textColor="@color/container"/>
 
         <EditText
             style="@style/EditTextForm"
@@ -42,7 +47,8 @@
                 android:id="@+id/auto_life_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none"/>
+                android:inputType="none"
+                android:textColor="@color/container"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/eraz_bg"
+    android:orientation="vertical"
+    tools:context=".CfmDescActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="monospace"
+        android:text="Existem duas formas de determinar \na frequência cardiaca máxima:"
+        android:textColor="@color/container"
+        android:textSize="18sp" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/shape_calc_menu"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextViewDescFcm"
+            android:paddingStart="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/fcm_tip_title" />
+
+        <TextView
+            style="@style/TextViewDescFcmOther"
+            android:text="@string/desc_example_fcm" />
+
+        <TextView
+            style="@style/TextViewDescFcm"
+            android:paddingStart="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/desc_fcm" />
+
+        <TextView
+            style="@style/TextViewDescFcm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/desc_two_fcm" />
+
+        <TextView
+            style="@style/TextViewDescFcmOther"
+            android:text="@string/fcmax_desc_optwo"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

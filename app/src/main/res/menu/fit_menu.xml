@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/imc_menu_search"
+        android:id="@+id/menu_search"
         android:title="@string/search"
         />
 

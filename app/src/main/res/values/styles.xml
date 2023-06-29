@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
+    <style name="TextViewDescFcmOther">
+        <item name="android:textColor">@color/container</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextViewDescFcm">
+        <item name="android:textColor">@color/container</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="TextViewForm">
         <item name="android:layout_marginStart">30dp</item>
         <item name="android:layout_marginEnd">30dp</item>
         <item name="android:layout_marginBottom">40dp</item>
     </style>
-    
+
     <style name="EditTextForm">
         <item name="android:layout_marginStart">30dp</item>
         <item name="android:layout_marginEnd">30dp</item>
@@ -16,12 +31,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    
+
     <style name="ButtonForm">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:backgroundTint">@color/black</item>
+        <item name="android:backgroundTint">@color/container</item>
     </style>
 
     <style name="AutoTextViewForm" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">

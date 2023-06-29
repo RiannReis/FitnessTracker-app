@@ -1,17 +1,16 @@
 package co.tiagoaguiar.fitnesstracker
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.tiagoaguiar.fitnesstracker.model.Calc
-import java.lang.IllegalStateException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -59,6 +58,14 @@ class ListCalcActivity : AppCompatActivity(), OnListClickListener{
                 i.putExtra("updateId", id)
                 startActivity(i)
             }
+            "fcm" -> { val i = Intent(this, CfmActivity::class.java)
+                i.putExtra("updateId", id)
+                startActivity(i)
+            }
+            "%gor" -> { val i = Intent(this, PercentActivity::class.java)
+                i.putExtra("updateId", id)
+                startActivity(i)
+            }
         }
         finish()
     }
@@ -66,7 +73,10 @@ class ListCalcActivity : AppCompatActivity(), OnListClickListener{
     override fun onLongClick(position: Int, calc: Calc) {
         AlertDialog.Builder(this)
             .setMessage(getString(R.string.delete_message))
-            .setNegativeButton(android.R.string.cancel) {
+            .setPositiveButton(R.string.cancel) { dialog, which ->
+
+            }
+            .setNegativeButton(R.string.delete){
                 dialog, wich ->
                 Thread {
                     val app = application as App
@@ -78,6 +88,11 @@ class ListCalcActivity : AppCompatActivity(), OnListClickListener{
                         runOnUiThread {
                             listCalcItems.removeAt(position)
                             adapter.notifyItemRemoved(position)
+                            Toast.makeText(
+                                this@ListCalcActivity,
+                                R.string.calc_removed,
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }.start()
@@ -111,10 +126,11 @@ class ListCalcActivity : AppCompatActivity(), OnListClickListener{
                 val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale("pt", "BR"))
 
                 val dataFromTheMoment = sdf.format(item.createdDate)
-                val imcValue = item.res
+                val id = item.id
+                val value = item.res
 
 
-                result.text = getString(R.string.list_response_imc, imcValue, dataFromTheMoment)
+                result.text = getString(R.string.list_response, id ,value, dataFromTheMoment)
 
                 result.setOnLongClickListener {
                     listener.onLongClick(adapterPosition, item)
