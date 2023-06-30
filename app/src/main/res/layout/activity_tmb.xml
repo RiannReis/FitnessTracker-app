@@ -26,17 +26,20 @@
         <EditText
             style="@style/EditTextForm"
             android:id="@+id/edit_tmb_weigth"
-            android:hint="@string/weigth"/>
+            android:hint="@string/weigth"
+            android:importantForAutofill="no" />
 
         <EditText
             style="@style/EditTextForm"
             android:id="@+id/edit_tmb_heigth"
-            android:hint="@string/heigth"/>
+            android:hint="@string/heigth"
+            android:importantForAutofill="no" />
 
         <EditText
             style="@style/EditTextForm"
             android:id="@+id/edit_tmb_age"
-            android:hint="@string/age"/>
+            android:hint="@string/age"
+            android:importantForAutofill="no" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/AutoTextViewForm"
@@ -44,6 +47,7 @@
             android:layout_height="wrap_content">
 
             <AutoCompleteTextView
+                android:hint="@string/label_auto_complete_tv"
                 android:id="@+id/auto_life_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

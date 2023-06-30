@@ -46,10 +46,10 @@ class PercentActivity : AppCompatActivity() {
 
             AlertDialog.Builder(this).apply {
                 setMessage(getString(R.string.perc_answer, result))
-                setPositiveButton(android.R.string.ok) { dialog, which ->
+                setPositiveButton(android.R.string.ok) { _, _ ->
 
                 }
-                setNegativeButton(R.string.save) { dialog, wich ->
+                setNegativeButton(R.string.save) { _, _ ->
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()

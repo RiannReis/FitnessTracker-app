@@ -41,34 +41,34 @@ class ImcActivity : AppCompatActivity() {
 
             val imcResponseId = imcResponse(result)
 
-            AlertDialog.Builder(this)
-
-                .setTitle(getString(R.string.imc_response, result))
-                .setMessage(imcResponseId)
-                .setPositiveButton(android.R.string.ok) { dialog, which ->
+            AlertDialog.Builder(this).apply {
+                setTitle(getString(R.string.imc_response, result))
+                setMessage(imcResponseId)
+                setPositiveButton(android.R.string.ok) { _, _ ->
 
                 }
-                .setNegativeButton(R.string.save) { dialog, wich ->
-                    Thread {
-                        val app = application as App
-                        val dao = app.db.calcDao()
+                    .setNegativeButton(R.string.save) { _, _ ->
+                        Thread {
+                            val app = application as App
+                            val dao = app.db.calcDao()
 
-                        val updateId = intent.extras?.getInt("updateId")
+                            val updateId = intent.extras?.getInt("updateId")
 
-                        if (updateId != null) {
-                            dao.update(Calc(id = updateId, type = "imc", res = result))
-                        } else {
-                            dao.insert(Calc(type = "imc", res = result))
-                        }
+                            if (updateId != null) {
+                                dao.update(Calc(id = updateId, type = "imc", res = result))
+                            } else {
+                                dao.insert(Calc(type = "imc", res = result))
+                            }
 
-                        runOnUiThread {
-                            openListActivity()
-                            Toast.makeText(this, R.string.update, Toast.LENGTH_SHORT).show()
-                        }
-                    }.start()
-                }
-                .create()
-                .show()
+                            runOnUiThread {
+                                openListActivity()
+                                Toast.makeText(this@ImcActivity, R.string.update, Toast.LENGTH_SHORT).show()
+                            }
+                        }.start()
+                    }
+                create()
+                show()
+            }
 
             val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)

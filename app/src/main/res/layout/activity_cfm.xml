@@ -15,8 +15,7 @@
         tools:context=".ImcActivity">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/DefaultWrapContent"
             android:paddingStart="48dp"
             android:paddingTop="8dp"
             android:paddingEnd="12dp"
@@ -50,14 +49,12 @@
 
             <RadioButton
                 android:id="@+id/radio_btn_man"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultWrapContent"
                 android:text="@string/male" />
 
             <RadioButton
                 android:id="@+id/radio_btn_fem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultWrapContent"
                 android:text="@string/female" />
 
         </RadioGroup>
@@ -66,7 +63,8 @@
         <EditText
             android:id="@+id/edit_fcm_age"
             style="@style/EditTextForm"
-            android:hint="@string/age" />
+            android:hint="@string/age"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/fcm_send"

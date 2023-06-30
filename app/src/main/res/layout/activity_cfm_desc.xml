@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="monospace"
-        android:text="Existem duas formas de determinar \na frequência cardiaca máxima:"
+        android:text="@string/title_fcm_tip"
         android:textColor="@color/container"
         android:textSize="18sp" />
 
@@ -27,6 +27,7 @@
         <TextView
             style="@style/TextViewDescFcm"
             android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             android:paddingBottom="8dp"
             android:text="@string/fcm_tip_title" />
 
@@ -37,6 +38,7 @@
         <TextView
             style="@style/TextViewDescFcm"
             android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             android:paddingBottom="8dp"
             android:text="@string/desc_fcm" />
 

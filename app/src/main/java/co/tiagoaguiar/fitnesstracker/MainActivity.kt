@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             MainItem(
                 id = 3,
                 drawableId = R.drawable.ic_baseline_favorite_24,
-                textStringId = R.string.label_cfm
+                textStringId = R.string.label_fcm
             )
         )
         mainItems.add(

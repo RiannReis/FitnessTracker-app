@@ -47,12 +47,12 @@ class TmbActivity : AppCompatActivity() {
             val result = calculateTmb(weigth, heigth, age)
             val tmbResponseId = tmbResponse(result)
 
-            AlertDialog.Builder(this)
-                .setMessage(getString(R.string.tmb_response, tmbResponseId))
-                .setPositiveButton(android.R.string.ok) { dialog, which ->
+            AlertDialog.Builder(this).apply {
+                setMessage(getString(R.string.tmb_response, tmbResponseId))
+                setPositiveButton(android.R.string.ok) { _, _ ->
 
                 }
-                .setNegativeButton(R.string.save) { dialog, wich ->
+                setNegativeButton(R.string.save) { _, _ ->
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
@@ -67,12 +67,13 @@ class TmbActivity : AppCompatActivity() {
 
                         runOnUiThread {
                             openListActivity()
-                            Toast.makeText(this, R.string.update, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@TmbActivity, R.string.update, Toast.LENGTH_SHORT).show()
                         }
                     }.start()
                 }
-                .create()
-                .show()
+                create()
+                show()
+            }
 
             val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)

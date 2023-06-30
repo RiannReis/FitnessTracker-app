@@ -35,9 +35,6 @@ class CfmActivity : AppCompatActivity() {
         }
 
 
-//        var resultMan = 0.0
-//        var resultFemale = 0.0
-
         btnSend.setOnClickListener {
             if (!validate()) {
                 Toast.makeText(this, R.string.fields_message, Toast.LENGTH_SHORT).show()
@@ -46,32 +43,14 @@ class CfmActivity : AppCompatActivity() {
 
             val age = editAge.text.toString().toInt()
 
-//            editRadioGroup.setOnCheckedChangeListener { group, checkedId ->
-//                if(editMan.isChecked){
-//                    resultMan = 220.0 - age
-//                }
-//                else if (editfem.isChecked){
-//                    resultFemale = 226.0 - age
-//                }
-//            }
-
-//            when (editRadioGroup.checkedRadioButtonId) {
-//                R.id.radio_btn_man -> {
-//                    resultMan = 220.0 - age
-//                }
-//                R.id.radio_btn_fem -> {
-//                    resultFemale = 226.0 - age
-//                }
-//            }
-
             val result = if (editMan.isChecked) 220.0 - age else 226.0 - age
 
             AlertDialog.Builder(this).apply {
                 setMessage(getString(R.string.cfm_answer, result))
-                setPositiveButton(android.R.string.ok) { dialog, which ->
+                setPositiveButton(android.R.string.ok) { _, _ ->
 
                 }
-                setNegativeButton(R.string.save) { dialog, wich ->
+                setNegativeButton(R.string.save) { _, _ ->
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
@@ -86,7 +65,8 @@ class CfmActivity : AppCompatActivity() {
 
                         runOnUiThread {
                             openListActivity()
-                            Toast.makeText(this@CfmActivity, R.string.update, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@CfmActivity, R.string.update, Toast.LENGTH_SHORT)
+                                .show()
                         }
                     }.start()
                 }

@@ -2,7 +2,7 @@
     <string name="app_name">Fitness Tracker</string>
     <string name="label_imc">IMC</string>
     <string name="label_tmb">TMB</string>
-    <string name="label_cfm">CFM</string>
+    <string name="label_fcm">FCM</string>
     <string name="label_fat_perc">% GORDURA</string>
     <string name="imc_desc">IMC é a sigla para Índice de Massa Corporal que serve para avaliar o peso
         do indivíduo em relação à sua altura e assim indicar se está dentro do peso ideal,
@@ -47,4 +47,8 @@
     <string name="fcmax_desc_optwo">Para determinar com mais precisão sua FCmax você deve fazer o seguinte: faça um aquecimento de cerca de vinte minutos acelerando por 100 metros ou 30 segundos até atingir o máximo das suas possibilidades (tem que se esforçar ao máximo). Em seguida, faça o mesmo, mas agora em 1000 metros ou durante 4 minutos. No final, verifique o número que aparece em seu monitor cardíaco, esta é a sua FCmax.</string>
     <string name="perc_title">Como é calculado o percentual\n de gordura corporal?</string>
     <string name="perc_desc">O nosso corpo é composto basicamente por massa magra (músculos e vísceras), massa gorda (gordura) e água.\n\nO percentual de gordura é um dos índices utilizados para avaliar a nossa composição corporal, porém alguns fatores devem ser levados em consideração — como o biótipo do indivíduo, que pode afetar diretamente na sua capacidade de acumular gordura.\n\nPara calcular a porcentagem de gordura corporal, podemos utilizar a fórmula:\n\nBT= (1,20 x IMC) + (0,23 x idade) – (10,8 x sexo) – 5.4.</string>
+    <string name="title_fcm_tip">Existem duas formas de determinar \na frequência cardiaca máxima:</string>
+    <string name="credits">By: Riann</string>
+    <string name="label_auto_complete_tv">Frequência de exercícios...</string>
+    <string name="logo">Logo from the cell</string>
 </resources>

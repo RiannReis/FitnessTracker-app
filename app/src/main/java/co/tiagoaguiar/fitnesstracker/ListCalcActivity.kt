@@ -26,7 +26,7 @@ class ListCalcActivity : AppCompatActivity(), OnListClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_calc)
 
-        listCalcItems = mutableListOf<Calc>()
+        listCalcItems = mutableListOf()
         adapter = ListCalcAdapter(listCalcItems, this)
 
         rvListCalc = findViewById(R.id.rv_list_calc)
@@ -71,20 +71,19 @@ class ListCalcActivity : AppCompatActivity(), OnListClickListener{
     }
 
     override fun onLongClick(position: Int, calc: Calc) {
-        AlertDialog.Builder(this)
-            .setMessage(getString(R.string.delete_message))
-            .setPositiveButton(R.string.cancel) { dialog, which ->
+        AlertDialog.Builder(this).apply {
+            setMessage(getString(R.string.delete_message))
+            setPositiveButton(R.string.cancel) { _, _ ->
 
             }
-            .setNegativeButton(R.string.delete){
-                dialog, wich ->
+            setNegativeButton(R.string.delete) { _, _ ->
                 Thread {
                     val app = application as App
                     val dao = app.db.calcDao()
 
                     val response = dao.delete(calc)
 
-                    if (response > 0){
+                    if (response > 0) {
                         runOnUiThread {
                             listCalcItems.removeAt(position)
                             adapter.notifyItemRemoved(position)
@@ -98,8 +97,9 @@ class ListCalcActivity : AppCompatActivity(), OnListClickListener{
                 }.start()
 
             }
-            .create()
-            .show()
+            create()
+            show()
+        }
     }
 
     private inner class ListCalcAdapter(private val listCalc: List<Calc>,

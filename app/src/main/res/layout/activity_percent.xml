@@ -15,11 +15,10 @@
         tools:context=".ImcActivity">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/DefaultWrapContent"
+            android:paddingBottom="8dp"
             android:text="@string/perc_title"
             android:textColor="@color/container"
-            android:paddingBottom="8dp"
             android:textSize="20sp" />
 
         <TextView
@@ -31,13 +30,14 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/edit_perc_imc"
+            style="@style/TextViewForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/label_imc"
+            android:importantForAutofill="no"
             android:inputType="numberDecimal"
-            android:maxLength="5"
-            style="@style/TextViewForm"
-            android:id="@+id/edit_perc_imc"
-            android:hint="@string/label_imc"/>
+            android:maxLength="5" />
 
 
         <RadioGroup
@@ -49,24 +49,23 @@
 
             <RadioButton
                 android:id="@+id/radio_btn_man_perc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultWrapContent"
                 android:text="@string/male" />
 
             <RadioButton
                 android:id="@+id/radio_btn_fem_perc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/DefaultWrapContent"
                 android:text="@string/female" />
 
         </RadioGroup>
 
 
         <EditText
-            android:layout_marginTop="32dp"
             android:id="@+id/edit_perc_age"
             style="@style/EditTextForm"
-            android:hint="@string/age" />
+            android:layout_marginTop="32dp"
+            android:hint="@string/age"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/perc_send"
