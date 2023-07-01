@@ -36,11 +36,11 @@ In this app includes: BMI (Body Mass Index), BMR (Basal Metabolic Rate), MHR (Ma
 ### Demo: 
 
 
-<img src="https://github.com/RiannReis/FitnessTracker-app/assets/106779395/d248055d-61c7-4824-9d03-fec141dbfb5e" alt="video-GIF example from the app" width="200" height="360">
+<img src="https://github.com/RiannReis/FitnessTracker-app/assets/106779395/3dfbf7b5-c9bc-4a0d-a357-84dd513eaa47" alt="video-GIF example from the app" width="200" height="360">
 
 
 
-<img src="https://github.com/RiannReis/FitnessTracker-app/assets/106779395/6e4ec567-08d0-4fdd-86eb-a112a336cef9" alt="video-GIF example from the app" width="200" height="360">
+<img src="https://github.com/RiannReis/FitnessTracker-app/assets/106779395/bf9a5883-8cf0-4a43-8ecc-8afa0f28db7f" alt="video-GIF example from the app" width="200" height="360">
 
 ## What I used during the proccess:
 
