@@ -1,7 +1,7 @@
 # FitnessTracker #2nd app!
 > Project - Fitness tracker app
 
-> Assists with some accounts related to the fitness area
+> Help with some calculations related to the fitness area 
 
 > Android Express course from Prof: Tiago Aguiar
 ---
