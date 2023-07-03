@@ -25,11 +25,11 @@
 
 ---
 ## Description:
-A simple app that helps with some accounts related to the fitness area.
+A simple app that helps with some calculations related to the fitness area.
 
 Important note: The language of the application is PT_BR
 
-it's an application created to study the mobile application development and its components. Use of Room Database, RecyclerView, Adapter, Data Structure, etc.
+it's an application created to study the mobile application development and it's components. Use of Room Database, RecyclerView, Adapter, Data Structure, etc.
 
 In this app includes: BMI (Body Mass Index), BMR (Basal Metabolic Rate), MHR (Maximum Heart Rate) and Body Fat Percentage.
 
